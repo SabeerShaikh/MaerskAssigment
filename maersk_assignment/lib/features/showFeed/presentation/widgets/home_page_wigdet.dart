@@ -27,7 +27,7 @@ class _HomeWidgetState extends State<HomeWidget> {
       //   print('Therapist List State :{$state}');
       if (state is FeedDataStateInitial) {}
       if (state is LoadingState) {
-        return Center(child: CircularProgressIndicator());
+        // return Center(child: CircularProgressIndicator());
       }
       if (state is LoadedState) {
       } else {
@@ -35,7 +35,7 @@ class _HomeWidgetState extends State<HomeWidget> {
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Text(
-              "You have not booked any sessions so far.",
+              "You dont have any data to display",
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.subtitle1,
             ),
@@ -43,7 +43,7 @@ class _HomeWidgetState extends State<HomeWidget> {
         );
       }
 
-      return CircularProgressIndicator();
+      return showWidgets();
     });
   }
 
@@ -56,16 +56,15 @@ class _HomeWidgetState extends State<HomeWidget> {
   }
 
   Widget floatButton() {
-    return Container(
-      child: FloatingActionButton(onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => AddFeedDataWidget(),
-          ),
-        );
-      }),
-    );
+    return FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => AddFeedDataWidget(),
+            ),
+          );
+        });
   }
-
 }

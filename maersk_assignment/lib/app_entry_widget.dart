@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class AppEntryWidget extends StatelessWidget {
-  const AppEntryWidget({Key? key}) : super(key: key);
+import 'splash.dart';
 
+class AppEntryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return SplashWidget();
   }
 }

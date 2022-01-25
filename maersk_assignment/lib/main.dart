@@ -80,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
         //themeMode: ThemeMode.system,
         // To pick the dark/ligt from the phone settings
 
-        //darkTheme: AppThemes.darkTheme,
+        themeMode: ThemeMode.light,
         // List all the app supported locales here
         supportedLocales: [
           Locale('en', ''),
