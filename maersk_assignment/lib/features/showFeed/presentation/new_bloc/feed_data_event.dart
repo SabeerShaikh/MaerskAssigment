@@ -1,4 +1,3 @@
-
 part of 'feed_data_bloc.dart';
 
 abstract class FeedDataEvent extends Equatable {
@@ -13,4 +12,13 @@ class FeedGetDataEvent extends FeedDataEvent {
 
   @override
   List<Object> get props => [];
+}
+
+class AddFeedDataEvent extends FeedDataEvent {
+  final FeedModelEntity feedModelEntity;
+
+  AddFeedDataEvent(this.feedModelEntity);
+
+  @override
+  List<Object> get props => [this.feedModelEntity];
 }

@@ -4,8 +4,9 @@ import 'package:http/http.dart' as http;
 import 'package:maersk_assignment/features/showFeed/data/datasources/feed_data_sources.dart';
 import 'package:maersk_assignment/features/showFeed/data/repository/feed_data_repository_impl.dart';
 import 'package:maersk_assignment/features/showFeed/domain/repository/feed_data_repository.dart';
+import 'package:maersk_assignment/features/showFeed/domain/usecase/add_feed_data_usecase.dart';
 import 'package:maersk_assignment/features/showFeed/domain/usecase/feed_data_usecase.dart';
-import 'package:maersk_assignment/features/showFeed/presentation/feed_bloc/feed_data_bloc.dart';
+import 'package:maersk_assignment/features/showFeed/presentation/new_bloc/feed_data_bloc.dart';
 
 final sl = GetIt.instance;
 
@@ -24,10 +25,14 @@ void init() async {
 
 authenticateUser() {
   //bloc
-  sl.registerFactory(() => FeedDataBloc(feedDataUseCase: sl()));
+  sl.registerFactory(() => FeedDataBloc(
+        feedDataUseCase: sl(),
+        addFeedDataUseCase: sl(),
+      ));
 
   //usecase
   sl.registerLazySingleton(() => FeedDataUseCase(sl()));
+  sl.registerLazySingleton(() => AddFeedDataUseCase(sl()));
 
   //Repositories
   sl.registerLazySingleton<FeedDataRepository>(

@@ -13,9 +13,18 @@ class FeedDataStateInitial extends FeedDataState {}
 class LoadingState extends FeedDataState {}
 
 class LoadedState extends FeedDataState {
-  final FeedDataModel dataModel;
+  final FeedModelEntity dataModel;
 
   LoadedState({required this.dataModel});
+
+  @override
+  List<Object> get props => [dataModel];
+}
+
+class NewDataAddedState extends FeedDataState {
+  final FeedModelEntity dataModel;
+
+  NewDataAddedState({required this.dataModel});
 
   @override
   List<Object> get props => [dataModel];

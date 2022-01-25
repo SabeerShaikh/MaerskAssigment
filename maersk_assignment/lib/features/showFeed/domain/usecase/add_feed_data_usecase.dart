@@ -7,15 +7,22 @@ import 'package:maersk_assignment/features/showFeed/data/model/feed_data_model.d
 import 'package:maersk_assignment/features/showFeed/domain/entity/feed_model_entity.dart';
 import 'package:maersk_assignment/features/showFeed/domain/repository/feed_data_repository.dart';
 
-class FeedDataUseCase
-    implements UseCase<FeedModelEntity, NoParams> {
+class AddFeedDataUseCase implements UseCase<FeedModelEntity, FeedDataParam> {
   final FeedDataRepository feedDataRepository;
 
-  FeedDataUseCase(this.feedDataRepository);
+  AddFeedDataUseCase(this.feedDataRepository);
 
   @override
-  Future<Either<Failure, FeedModelEntity>> call(
-      NoParams params) async {
-    return await feedDataRepository.getFeedData();
+  Future<Either<Failure, FeedModelEntity>> call(FeedDataParam params) async {
+    return await feedDataRepository.addData(params.feedModelEntity);
   }
+}
+
+class FeedDataParam extends Equatable {
+  final FeedModelEntity feedModelEntity;
+
+  FeedDataParam({required this.feedModelEntity});
+
+  @override
+  List<Object?> get props => [feedModelEntity];
 }
